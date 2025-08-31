@@ -1,7 +1,7 @@
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -16,7 +16,7 @@ public class Main {
                 .flatMap(student -> student.getGrades().entrySet().stream())
                 .collect(Collectors.groupingBy(
                         Map.Entry::getKey,
-                        HashMap::new,
+                        ConcurrentHashMap::new,
                         Collectors.averagingDouble(Map.Entry::getValue)
                 ));
 
